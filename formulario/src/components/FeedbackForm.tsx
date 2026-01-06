@@ -1,12 +1,10 @@
-import React, { useState, type ChangeEvent } from 'react';
+import React, { useState, type ChangeEvent, type FormEvent } from 'react'; 
 
 const FeedbackForm = () => {
-  // O TypeScript infere que é string, mas ser explícito ajuda na leitura
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [comment, setComment] = useState<string>('');
 
-  // Dica PRO: Tipando o evento inline corretamente
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
@@ -19,8 +17,33 @@ const FeedbackForm = () => {
     setComment(e.target.value);
   };
 
+  // 2. A lógica de envio
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Impede o refresh da página
+
+    // Validação Simples (Best Practice: Fail Fast)
+    if (!name || !email || !comment) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    // Exibindo os dados (Simulando um envio para API)
+    alert(`
+      Feedback Enviado com Sucesso!
+      Nome: ${name}
+      Email: ${email}
+      Comentário: ${comment}
+    `);
+
+    // Limpar o formulário após envio (Boa UX)
+    setName('');
+    setEmail('');
+    setComment('');
+  };
+
   return (
-    <form>
+    // 3. Conectando a função no onSubmit
+    <form onSubmit={handleSubmit}>
       <h2>Formulário de Feedback</h2>
       
       <div className="form-group">
@@ -50,7 +73,7 @@ const FeedbackForm = () => {
         <textarea 
           id="comment" 
           placeholder="Deixe seu comentário"
-          rows={4} 
+          rows={4}
           value={comment}
           onChange={handleCommentChange}
         />
