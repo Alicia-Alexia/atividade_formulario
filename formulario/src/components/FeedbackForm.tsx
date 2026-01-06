@@ -1,4 +1,5 @@
 import React, { useState, type ChangeEvent, type FormEvent } from 'react'; 
+import './FeedbackForm.css';
 
 const FeedbackForm = () => {
   const [name, setName] = useState<string>('');
@@ -43,7 +44,7 @@ const FeedbackForm = () => {
 
   return (
     // 3. Conectando a função no onSubmit
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="feedback-form"> 
       <h2>Formulário de Feedback</h2>
       
       <div className="form-group">
