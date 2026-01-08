@@ -1,8 +1,8 @@
+<img src="img/image.png" alt="Imagem do Projeto" width="250">
+
 # 📝 React Feedback Form - State & UX Showcase
 
 Este projeto é uma aplicação prática dos conceitos fundamentais do React, focando no gerenciamento de estado (`useState`), validação de formulários e uma experiência de usuário (UX) polida e responsiva.
-
-![Project Preview](img/preview.png)
 
 ## 🎨 Design & Decisões de UI
 
